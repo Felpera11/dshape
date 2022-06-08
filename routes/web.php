@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MeasurementsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +18,10 @@ Route::get('/', function () {
     return view('measurement/home');
 });
 
-Route::get('/measurements', function () {
-    return view('measurement/list');
-});
+Route::get('/measurements', [MeasurementsController::class, 'index']);
 
 Route::get('/measurements/new', function () {
     return view('measurement/form');
 });
+
+Route::post('/measurements/new', [MeasurementsController::class, 'store']);

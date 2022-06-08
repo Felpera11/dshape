@@ -18,11 +18,12 @@
                 </div>
                 <div class="card-body">
                     <div class="container px-5 my-3">
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                        <form action="/measurements/new" method="POST" >
+                            @csrf
 
                             {{-- Data --}}
                             <div class="form-floating mb-3 shadow-sm">
-                                <input class="form-control" id="data" type="date" placeholder="Data"
+                                <input name="date" class="form-control" id="data" type="date" placeholder="Data"
                                     data-sb-validations="required" />
                                 <label for="pesoKg">Data da medição</label>
                                 <div class="invalid-feedback" data-sb-feedback="pesoKg:required">Data é obrigatória.
@@ -31,7 +32,7 @@
 
                             {{-- Peso --}}
                             <div class="form-floating mb-3 shadow-sm">
-                                <input class="form-control" id="pesoKg" type="text" placeholder="Peso(kg)"
+                                <input name="weight" class="form-control" id="pesoKg" type="text" placeholder="Peso(kg)"
                                     data-sb-validations="required" />
                                 <label for="pesoKg">Peso(kg)</label>
                                 <div class="invalid-feedback" data-sb-feedback="pesoKg:required">Peso(kg) é obrigatório.
@@ -40,7 +41,7 @@
 
                             {{-- Altura --}}
                             <div class="form-floating mb-3 shadow-sm">
-                                <input class="form-control" id="alturaCm" type="text" placeholder="Altura(cm)"
+                                <input name="height" class="form-control" id="alturaCm" type="text" placeholder="Altura(cm)"
                                     data-sb-validations="required" />
                                 <label for="alturaCm">Altura(cm)</label>
                                 <div class="invalid-feedback" data-sb-feedback="alturaCm:required">Altura(cm) é
@@ -49,7 +50,7 @@
 
                             {{-- Peitoral --}}
                             <div class="form-floating mb-3 shadow-sm">
-                                <input class="form-control" id="peitoralCm" type="text" placeholder="Peitoral(cm)"
+                                <input name="chest" class="form-control" id="peitoralCm" type="text" placeholder="Peitoral(cm)"
                                     data-sb-validations="required" />
                                 <label for="peitoralCm">Peitoral(cm)</label>
                                 <div class="invalid-feedback" data-sb-feedback="peitoralCm:required">Peitoral(cm) é
@@ -58,7 +59,7 @@
 
                             {{-- Braço Esquerdo --}}
                             <div class="form-floating mb-3 shadow-sm">
-                                <input class="form-control" id="bracoEsquerdoCm" type="text"
+                                <input name="left_arm" class="form-control" id="bracoEsquerdoCm" type="text"
                                     placeholder="Braço Esquerdo(cm)" data-sb-validations="required" />
                                 <label for="bracoEsquerdoCm">Braço Esquerdo(cm)</label>
                                 <div class="invalid-feedback" data-sb-feedback="bracoEsquerdoCm:required">Braço
@@ -67,7 +68,7 @@
 
                             {{-- Braço Direito --}}
                             <div class="form-floating mb-3 shadow-sm">
-                                <input class="form-control" id="bracoDireitoCm" type="text"
+                                <input name="right_arm" class="form-control" id="bracoDireitoCm" type="text"
                                     placeholder="Braço Direito(cm)" data-sb-validations="required" />
                                 <label for="bracoDireitoCm">Braço Direito(cm)</label>
                                 <div class="invalid-feedback" data-sb-feedback="bracoDireitoCm:required">Braço
@@ -76,7 +77,7 @@
 
                             {{-- Abdômen --}}
                             <div class="form-floating mb-3 shadow-sm">
-                                <input class="form-control" id="abdomenCm" type="text" placeholder="Abdômen(cm)"
+                                <input name="abdomen" class="form-control" id="abdomenCm" type="text" placeholder="Abdômen(cm)"
                                     data-sb-validations="required" />
                                 <label for="abdomenCm">Abdômen(cm)</label>
                                 <div class="invalid-feedback" data-sb-feedback="abdomenCm:required">Abdômen(cm) é
@@ -85,7 +86,7 @@
 
                             {{-- Cintura --}}
                             <div class="form-floating mb-3 shadow-sm">
-                                <input class="form-control" id="cinturaCm" type="text" placeholder="Cintura(cm)"
+                                <input name="waist" class="form-control" id="cinturaCm" type="text" placeholder="Cintura(cm)"
                                     data-sb-validations="required" />
                                 <label for="cinturaCm">Cintura(cm)</label>
                                 <div class="invalid-feedback" data-sb-feedback="cinturaCm:required">Cintura(cm) é
@@ -94,7 +95,7 @@
 
                             {{-- Quadril --}}
                             <div class="form-floating mb-3 shadow-sm">
-                                <input class="form-control" id="quadrilCm" type="text" placeholder="Quadril(cm)"
+                                <input name="hips" class="form-control" id="quadrilCm" type="text" placeholder="Quadril(cm)"
                                     data-sb-validations="required" />
                                 <label for="quadrilCm">Quadril(cm)</label>
                                 <div class="invalid-feedback" data-sb-feedback="quadrilCm:required">Quadril(cm) é
@@ -103,7 +104,7 @@
 
                             {{-- Coxa Esquerda --}}
                             <div class="form-floating mb-3 shadow-sm">
-                                <input class="form-control" id="coxaEsquerdaCm" type="text"
+                                <input name="left_thigh" class="form-control" id="coxaEsquerdaCm" type="text"
                                     placeholder="Coxa Esquerda(cm)" data-sb-validations="required" />
                                 <label for="coxaEsquerdaCm">Coxa Esquerda(cm)</label>
                                 <div class="invalid-feedback" data-sb-feedback="coxaEsquerdaCm:required">Coxa
@@ -112,7 +113,7 @@
 
                             {{-- Coxa Direita --}}
                             <div class="form-floating mb-3 shadow-sm">
-                                <input class="form-control" id="coxaDireitaCm" type="text"
+                                <input name="right_thigh" class="form-control" id="coxaDireitaCm" type="text"
                                     placeholder="Coxa Direita(cm)" data-sb-validations="required" />
                                 <label for="coxaDireitaCm">Coxa Direita(cm)</label>
                                 <div class="invalid-feedback" data-sb-feedback="coxaDireitaCm:required">Coxa Direita(cm)
@@ -121,7 +122,7 @@
 
                             {{-- Panturrilha Esquerda --}}
                             <div class="form-floating mb-3 shadow-sm">
-                                <input class="form-control" id="panturrilhaEsquerdaCm" type="text"
+                                <input name="left_calf" class="form-control" id="panturrilhaEsquerdaCm" type="text"
                                     placeholder="Panturrilha Esquerda(cm)" data-sb-validations="required" />
                                 <label for="panturrilhaEsquerdaCm">Panturrilha Esquerda(cm)</label>
                                 <div class="invalid-feedback" data-sb-feedback="panturrilhaEsquerdaCm:required">
@@ -130,7 +131,7 @@
 
                             {{-- Panturrilha Direita --}}
                             <div class="form-floating mb-3 shadow-sm">
-                                <input class="form-control" id="panturrilhaDireitaCm" type="text"
+                                <input name="right_calf" class="form-control" id="panturrilhaDireitaCm" type="text"
                                     placeholder="Panturrilha Direita(cm)" data-sb-validations="required" />
                                 <label for="panturrilhaDireitaCm">Panturrilha Direita(cm)</label>
                                 <div class="invalid-feedback" data-sb-feedback="panturrilhaDireitaCm:required">

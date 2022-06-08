@@ -7,3 +7,5 @@
         <li><a href="/measurements">Listar</a></li>
     </ul>
 @endsection
+
+{{-- coração  ->  Ɛ>  --}}
